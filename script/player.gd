@@ -10,6 +10,7 @@ const JUMP_VELOCITY = -230.0
 const MAX_Jumps = 2
 var Jumps_left = MAX_Jumps
 
+#called every frame
 func _physics_process(delta):
 
 	# Gravity
@@ -33,16 +34,18 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+#Healing
 func Heal(amount):
 	Health += amount
 	print("Health: ", Health)
 	
 
+#Damage
 func Damage(amount):
 	Health -= amount
 	print("Health: ", Health)
 	
-
+#die
 	if Health <= 0:
 		get_tree().reload_current_scene()
 		return
