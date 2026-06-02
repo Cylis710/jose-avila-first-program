@@ -6,5 +6,6 @@ func _ready() -> void:
 
 
 func _on_area_2d_body_entered(body: CharacterBody2D):
-	if body.is_in_group("player"):
-		body.heal(5)
+	if body.has_method("Heal"):
+		body.Heal(5)
+		queue_free()

@@ -5,7 +5,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		body.heal(5)
+func _on_body_entered(body):
+		body.Heal(5)
 		print("hp^+^", body.Health)
+		queue_free()

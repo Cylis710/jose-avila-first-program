@@ -15,3 +15,7 @@ func _process(delta):
 	if ray_cast_2d_2.is_colliding():
 		direction = -1
 	position.x += direction * speed * delta
+
+func damage(body):
+	if body.has_method("Damage"):
+		body.Damage(25)

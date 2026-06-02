@@ -5,8 +5,9 @@ var coins = 0
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -230.0
-const MAX_Jumps = 2
 
+#jump limit
+const MAX_Jumps = 2
 var Jumps_left = MAX_Jumps
 
 func _physics_process(delta):
@@ -32,7 +33,16 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func heal(amount):
+func Heal(amount):
 	Health += amount
-	print("Health:", Health)
+	print("Health: ", Health)
 	
+
+func Damage(amount):
+	Health -= amount
+	print("Health: ", Health)
+	
+
+	if Health <= 0:
+		get_tree().reload_current_scene()
+		return
