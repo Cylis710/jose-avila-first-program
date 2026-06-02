@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cvqq8om0vmqa2"]
+
+[ext_resource type="Script" uid="uid://bn742x8iq52ss" path="res://script/mushroom.gd" id="1_0bdi0"]
+[ext_resource type="Texture2D" uid="uid://dhcgpowso5qaj" path="res://2D Resources/tilesets/props.png" id="1_fh608"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn26x"]
+atlas = ExtResource("1_fh608")
+region = Rect2(92, 117, 22, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w1r7o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn26x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tdd4g"]
+radius = 3.347826
+height = 8.571428
+
+[node name="Area2D" type="Area2D" unique_id=405446432]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_0bdi0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1076560424]
+position = Vector2(-0.5, 1)
+scale = Vector2(1.0454545, 1.1666666)
+sprite_frames = SubResource("SpriteFrames_w1r7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=310362705]
+light_mask = 5
+visibility_layer = 5
+z_index = 2
+position = Vector2(-0.5, 1)
+scale = Vector2(1.0454545, 1.1666666)
+shape = SubResource("CapsuleShape2D_tdd4g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

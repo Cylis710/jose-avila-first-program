@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bry0q5noof5p6"]
+
+[ext_resource type="Script" uid="uid://q63kxd688h4w" path="res://script/fruit.gd" id="1_yvtr8"]
+[ext_resource type="Texture2D" uid="uid://bdk2di08c0gd" path="res://2D Resources/items/fruit.png" id="2_t2alg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64keg"]
+atlas = ExtResource("2_t2alg")
+region = Rect2(2, 0, 11, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d2he"]
+atlas = ExtResource("2_t2alg")
+region = Rect2(2, 16, 11, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lay3v"]
+atlas = ExtResource("2_t2alg")
+region = Rect2(2, 32, 11, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gldak"]
+atlas = ExtResource("2_t2alg")
+region = Rect2(2, 48, 11, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6k8dh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64keg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d2he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lay3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gldak")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.3
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvtr8"]
+size = Vector2(9, 5)
+
+[node name="fruit" type="Node2D" unique_id=1227411642]
+script = ExtResource("1_yvtr8")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=773071364]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=307177052]
+sprite_frames = SubResource("SpriteFrames_6k8dh")
+autoplay = "default"
+frame = 2
+frame_progress = 0.18267824
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=280039214]
+light_mask = 5
+visibility_layer = 5
+z_index = 1
+texture_filter = 1
+position = Vector2(0.5, 2.5)
+shape = SubResource("RectangleShape2D_yvtr8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
