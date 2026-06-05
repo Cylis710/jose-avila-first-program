@@ -29,8 +29,10 @@ folder_colors={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+2d/default_gravity=835.9650000000001
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_repeat=1
 rendering_device/driver.windows="d3d12"

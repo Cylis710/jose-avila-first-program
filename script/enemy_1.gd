@@ -13,6 +13,6 @@ func _process(delta):
 		direction = -1
 	position.x += direction * speed * delta
 
-func damage(body):
+func _on_area2D_body_entered(body):
 	if body.has_method("Damage"):
 		body.Damage(25)

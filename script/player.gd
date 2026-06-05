@@ -3,8 +3,8 @@ extends CharacterBody2D
 var Health = 115
 var coins = 0
 
-const SPEED = 150.0
-const JUMP_VELOCITY = -230.0
+const SPEED = 95.0
+const JUMP_VELOCITY = -210.0
 
 #jump limit
 const MAX_Jumps = 2
