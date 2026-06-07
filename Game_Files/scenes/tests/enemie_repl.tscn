@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dkp7kfydxd86d"]
+
+[ext_resource type="PackedScene" uid="uid://q3gtvjaifgha" path="res://Game_Files/enemies/enemie_clone.tscn" id="1_8g527"]
+[ext_resource type="Script" path="res://script/enemie_repl.gd" id="2_kqq34"]
+
+[node name="enemie-repl" unique_id=357926188 instance=ExtResource("1_8g527")]
+script = ExtResource("2_kqq34")
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=905131149]
+frame = 6
+frame_progress = 0.12599471

@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://ct0jdh8puamif"]
+
+[ext_resource type="Texture2D" uid="uid://cnmq7715ibjau" path="res://2D Resources/enemies/Green Slime Spritesheet.png" id="1_a1412"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq62l"]
+atlas = ExtResource("1_a1412")
+region = Rect2(48, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3026"]
+atlas = ExtResource("1_a1412")
+region = Rect2(64, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l21ug"]
+atlas = ExtResource("1_a1412")
+region = Rect2(80, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nrqq"]
+atlas = ExtResource("1_a1412")
+region = Rect2(96, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oweuj"]
+atlas = ExtResource("1_a1412")
+region = Rect2(112, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcr21"]
+atlas = ExtResource("1_a1412")
+region = Rect2(128, 18, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5oq2"]
+atlas = ExtResource("1_a1412")
+region = Rect2(144, 18, 16, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m468s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq62l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3026")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l21ug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nrqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oweuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcr21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5oq2")
+}],
+"loop": true,
+"name": &"idle walk",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_gwy4j"]
+script/source = "extends AnimatedSprite2D
+const Gravity = 800
+const speed = 70
+var direction = 1
+# Called when the node enters the scene tree for the first time.
+@onready var RayCastleft: RayCast2D = $RayCast2D
+@onready var RayCastright: RayCast2D = $RayCast2D2
+@onready var timer: Timer = $Area2D/Timer
+@onready var enemy: AnimatedSprite2D = $\".\"
+
+func _process(delta) -> void:
+	if RayCastleft.is_colliding():
+		direction = 1
+		enemy.flip_H = true
+	if RayCastright.is_colliding():
+		direction = -1
+	position.x += direction * speed * delta
+	enemy.flip_H = false
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jvuks"]
+radius = 8.333337
+
+[node name="enemy1" type="AnimatedSprite2D" unique_id=2141644475]
+sprite_frames = SubResource("SpriteFrames_m468s")
+animation = &"idle walk"
+autoplay = "idle walk"
+frame = 3
+frame_progress = 0.4677927
+flip_h = true
+script = SubResource("GDScript_gwy4j")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=166374778]
+physics_interpolation_mode = 1
+texture_filter = 1
+gravity_space_override = 1
+gravity_point = true
+
+[node name="Timer" type="Timer" parent="Area2D" unique_id=624257877]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1168356928]
+z_index = 4
+position = Vector2(0, 2.9999998)
+scale = Vector2(0.47999978, 0.2905785)
+shape = SubResource("CircleShape2D_jvuks")
+
+[node name="RayCastleft" type="RayCast2D" parent="." unique_id=1453777829]
+target_position = Vector2(-7, 1)
+collision_mask = 5
+
+[node name="RayCastright" type="RayCast2D" parent="." unique_id=1697222095]
+target_position = Vector2(6, 1)
+collision_mask = 5
+
+[connection signal="timeout" from="Area2D/Timer" to="." method="_on_timer_timeout"]

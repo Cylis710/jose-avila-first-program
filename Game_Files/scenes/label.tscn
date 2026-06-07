@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bihn8bd3aamou"]
+
+[ext_resource type="Script" uid="uid://c5uv7wthf07qi" path="res://Game_Files/script/label sign.gd" id="1_2uqk7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3yin"]
+size = Vector2(46.591362, 13.61942)
+
+[node name="Label" type="Label" unique_id=1733888805]
+offset_top = -1.0
+offset_right = 40.0
+offset_bottom = 22.0
+scale = Vector2(0.10819554, 0.07342458)
+script = ExtResource("1_2uqk7")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2030713860]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1657789020]
+position = Vector2(13.674418, 13.619418)
+scale = Vector2(1, -0.089553475)
+shape = SubResource("RectangleShape2D_a3yin")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
