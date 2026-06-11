@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://t7c25ytnlnl5"]
 
 [ext_resource type="PackedScene" uid="uid://5ferghr5p33h" path="res://Game_Files/scenes/main_game.tscn" id="1_5oyet"]
+[ext_resource type="PackedScene" uid="uid://bb1c42qhbbi0e" path="res://Game_Files/scenes/main_menu___display.tscn" id="1_c26yl"]
 
 [node name="game management" type="Node" unique_id=2055401261]
 
-[node name="main game" parent="." unique_id=789892845 instance=ExtResource("1_5oyet")]
-position = Vector2(-3, -2)
+[node name="Main Menu _ Display" parent="." unique_id=1881993753 instance=ExtResource("1_c26yl")]
+
+[node name="main game" parent="Main Menu _ Display" unique_id=789892845 instance=ExtResource("1_5oyet")]
+position = Vector2(-560, -310)

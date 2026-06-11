@@ -1,13 +1,17 @@
 [gd_scene format=3 uid="uid://bb1c42qhbbi0e"]
 
+[ext_resource type="Script" uid="uid://bpggelid46yp" path="res://Game_Files/script/main_menu___display.gd" id="1_dopc3"]
 [ext_resource type="Theme" uid="uid://bk31r3ptkf6l4" path="res://Game_Files/scenes/new_theme.tres" id="1_illw1"]
 
 [node name="Main Menu _ Display" type="CenterContainer" unique_id=1881993753]
 texture_filter = 1
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 557.0
+offset_top = 308.0
+offset_right = 597.0
+offset_bottom = 348.0
 size_flags_horizontal = 6
 use_top_left = true
+script = ExtResource("1_dopc3")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=846995257]
 layout_mode = 2
@@ -32,3 +36,7 @@ text = "Settings"
 [node name="Quit" type="Button" parent="PanelContainer/VBoxContainer" unique_id=103772356]
 layout_mode = 2
 text = "Quit"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
